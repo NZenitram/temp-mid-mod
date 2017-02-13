@@ -9,6 +9,9 @@ class Api::V1::LinksController < ApplicationController
     end
   end
 
+  def index
+  end
+
   private
 
   def link_params
