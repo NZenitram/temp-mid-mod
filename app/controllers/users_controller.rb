@@ -9,9 +9,10 @@ class UsersController < ApplicationController
     if user.save
       flash[:success] = "Account for #{user.email} created."
       session[:user_id] = user.id
-      redirect_to login_path
+      redirect_to root_path
     else
-      render :new
+      flash[:notice] = "Please fill out all forms."
+      redirect_to new_user_path
     end
   end
 
