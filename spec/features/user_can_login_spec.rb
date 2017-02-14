@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "can mark links as read" do
-  scenario "Mark a link as read" do
+RSpec.describe "a user can create and account and login" do
+  scenario "user can create an account" do
     user = User.create!(email: "test@test.com", password_digest: BCrypt::Password.create("test"))
 
     visit '/'
@@ -56,5 +56,25 @@ RSpec.describe "can mark links as read" do
 
     expect(page).to have_content("You have successfully logged out.")
 
+  end
+
+  scenario "Mark a link as read" do
+    user = User.create!(email: "test@test.com", password_digest: BCrypt::Password.create("test"))
+
+    visit '/'
+    expect(page).to have_content("Login")
+    expect(page).to have_content("Create User")
+
+    click_link "Create User"
+
+    expect(page).to have_content("Email")
+    expect(page).to have_content("Password")
+
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password_digest
+
+    click_button "Create User"
+
+    expect(page).to have_content("Please fill out all forms.")
   end
 end
