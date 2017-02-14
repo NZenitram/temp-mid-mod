@@ -1,4 +1,5 @@
 class LinksController < ApplicationController
+  include ApplicationHelper
 
   def index
     @links = Link.all

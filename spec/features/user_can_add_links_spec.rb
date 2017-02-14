@@ -30,11 +30,10 @@ RSpec.describe "an authencticated user can add links" do
     expect(page).to have_content("Url")
 
     fill_in "Title", with: "Example"
-    fill_in "Url", with: "http://www.example"
+    fill_in "Url", with: "example"
 
     click_button "Create Link"
-    expect(page).to have_content("#{link.title} not save, please make sure URL is valid")
-
+    expect(page).to have_content("Example not save, please make sure URL is valid")
 
   end
 end
