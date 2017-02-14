@@ -58,7 +58,7 @@ RSpec.describe "a user can create and account and login" do
 
   end
 
-  scenario "Mark a link as read" do
+  scenario "a user returns to new user page when form isn't filled out" do
     user = User.create!(email: "test@test.com", password_digest: BCrypt::Password.create("test"))
 
     visit '/'
@@ -75,6 +75,6 @@ RSpec.describe "a user can create and account and login" do
 
     click_button "Create User"
 
-    expect(page).to have_content("Please fill out all forms.")
+    expect(page).to have_content("Please fill out all forms and make sure your passwords match.")
   end
 end

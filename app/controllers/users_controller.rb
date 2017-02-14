@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path
     else
-      flash[:notice] = "Please fill out all forms and make sure you passwords match."
+      flash[:notice] = "Please fill out all forms and make sure your passwords match."
       redirect_to new_user_path
     end
   end
